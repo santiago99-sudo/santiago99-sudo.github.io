@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDEO-MANTAP-MANTAP</title>
+
+    <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
+    <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
+
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .logo { color: #ff0000; font-size: 28px; font-weight: bold; margin-bottom: 5px; }
+        .btn-play { background: #ff0000; color: #fff; padding: 20px 50px; font-size: 22px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px rgba(255,0,0,0.5); }
+        .ad-slot { margin-top: 35px; }
+    </style>
+</head>
+<body>
+
+    <div class="logo">VIDEO-MANTAP-MANTAP</div>
+    <p style="color:#aaa; font-size:12px;">Premium Streaming Player</p>
+
+    <button id="playBtn" class="btn-play">PLAY VIDEO ▶</button>
+
+    <div class="ad-slot">
+        <script type="text/javascript">
+            atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
+    </div>
+
+    <script>
+    document.getElementById('playBtn').addEventListener('click', function() {
+        const params = new URLSearchParams(window.location.search);
+        const videoUrl = params.get('url');
+
+        // ARAHKAN KE LINK DIRECT PUNYA PARTNER (GANTI LINK DI BAWAH INI)
+        const friendDirectLink = 'https://otieu.com/4/10542921';
+
+        const lastAd = localStorage.getItem('lastAdPartner');
+        const now = new Date().getTime();
+
+        if (!lastAd || (now - lastAd > 300000)) {
+            localStorage.setItem('lastAdPartner', now);
+            window.open(friendDirectLink, '_blank');
+        }
+
+        if (videoUrl) {
+            window.location.href = videoUrl;
+        } else {
+            // Jika link video kosong, paksa masuk ke gudang video kamu
+            window.location.href = 'info-update.html';
+        }
+    });
+    </script>
+</body>
+</html>

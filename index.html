@@ -1,7 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Verifikasi Video</title>
+
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
+
+    <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
+
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 20px; }
+        .btn-play { background: #ff0000; color: #fff; padding: 20px 45px; font-size: 22px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 25px rgba(255,0,0,0.5); transition: 0.2s; }
+        .btn-play:active { transform: scale(0.95); }
+        p { color: #888; margin-bottom: 25px; font-size: 14px; }
+    </style>
 </head>
-<body>Verification Active</body>
+<body>
+    <p>Klik tombol di bawah untuk memutar video</p>
+    <button class="btn-play" onclick="handlePlay()">KLIK UNTUK PLAY ▶</button>
+
+    <script>
+    function handlePlay() {
+        const params = new URLSearchParams(window.location.search);
+        const videoUrl = params.get('url');
+        
+        // Jika link tidak ada (bukan dari info-update), arahkan ke daftar utama
+        if (!videoUrl) {
+            window.location.href = 'info-update.html';
+            return;
+        }
+
+        const lastAd = localStorage.getItem('lastAdTime');
+        const now = new Date().getTime();
+
+        // Iklan Direct Link (Jeda 5 menit)
+        if (!lastAd || (now - lastAd > 300000)) {
+            localStorage.setItem('lastAdTime', now);
+            window.open('https://otieu.com/4/10545078', '_blank');
+        }
+        
+        // Langsung pindah ke Videy (Anti Lag)
+        window.location.href = videoUrl;
+    }
+    </script>
+</body>
 </html>

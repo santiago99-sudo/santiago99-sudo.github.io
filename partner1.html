@@ -3,93 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDEO-MANTAP-MANTAP</title>
-    
-    <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
-
+    <title>VIDEO VIRAL</title>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; text-align: center; }
-        .logo { color: #ff0000; font-size: 26px; font-weight: 900; margin-bottom: 20px; }
-        /* Tombol Utama dibuat lebih besar agar mudah diklik di HP */
-        .main-btn { background: #ff0000; color: white; padding: 20px; border-radius: 10px; font-weight: bold; font-size: 20px; border: none; cursor: pointer; width: 100%; max-width: 320px; display: block; margin: 0 auto 30px auto; }
-        .list-container { text-align: left; max-width: 500px; margin: 0 auto; background: #111; padding: 10px; border-radius: 10px; }
-        .video-item { background: #222; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid red; }
-        .play-small { background: #ff0000; color: white; padding: 8px 15px; border-radius: 5px; font-size: 12px; font-weight: bold; border: none; text-decoration: none; }
-        .ad-space { margin: 20px 0; min-height: 50px; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 10px; }
+        .logo { color: red; font-size: 24px; font-weight: bold; margin: 20px 0; }
+        .main-btn { background: red; color: white; padding: 15px; border-radius: 10px; font-weight: bold; width: 100%; max-width: 320px; border: none; cursor: pointer; }
+        .list-container { text-align: left; max-width: 500px; margin: 20px auto; background: #111; padding: 10px; border-radius: 10px; }
+        .video-item { background: #222; padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .play-small { background: red; color: white; padding: 5px 10px; border-radius: 5px; border: none; font-size: 12px; }
     </style>
 </head>
 <body>
-
     <div class="logo">VIDEO-MANTAP-MANTAP</div>
-
+    
     <button id="mainPlay" class="main-btn">KLIK UNTUK NONTON ▶</button>
 
-    <div class="ad-space">
-        <script type="text/javascript">
-            atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};
-        </script>
-        <script src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
     <div id="videoList" class="list-container">
-        <p style="text-align:center;">Memuat daftar video...</p>
+        <p>Memuat daftar video...</p>
     </div>
 
     <script>
-        const partnerDirectLink = 'https://otieu.com/4/10542921';
         const repoTxt = 'https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt';
 
-        // 1. Fungsi Klik Tombol Utama (LEBIH CEPAT)
-        document.getElementById('mainPlay').onclick = function() {
-            const params = new URLSearchParams(window.location.search);
-            const videoUrl = params.get('url');
-
-            // Cek Jeda Iklan
-            const lastAd = localStorage.getItem('lastAdPartner');
-            const now = new Date().getTime();
-
-            if (!lastAd || (now - lastAd > 300000)) {
-                localStorage.setItem('lastAdPartner', now);
-                window.open(partnerDirectLink, '_blank');
-            }
-
-            // Langsung eksekusi video tanpa delay lama
-            if (videoUrl) {
-                window.location.href = videoUrl;
-            } else {
-                alert('Silakan pilih video di bawah!');
-            }
-        };
-
-        // 2. Fungsi Pilih Video di List
-        function pilihVideo(link) {
-            // Langsung refresh ke atas dengan URL baru
-            window.location.href = window.location.pathname + '?url=' + encodeURIComponent(link);
+        // Fungsi lempar ke gerbang merah
+        function lariKeGerbang(videoLink) {
+            window.location.href = 'gerbang-partner.html?url=' + encodeURIComponent(videoLink);
         }
 
-        // 3. Load List Otomatis
-        async function loadList() {
-            try {
-                const res = await fetch(repoTxt);
-                const text = await res.text();
-                const lines = text.split('\n').filter(l => l.trim() !== '');
-                const listDiv = document.getElementById('videoList');
-                listDiv.innerHTML = '<h4 style="margin:5px 0 15px 0; color:#888;">PILIH VIDEO LAINNYA:</h4>';
+        document.getElementById('mainPlay').onclick = function() {
+            const params = new URLSearchParams(window.location.search);
+            const currentUrl = params.get('url');
+            if(currentUrl) { lariKeGerbang(currentUrl); } else { alert('Pilih video di bawah!'); }
+        };
 
-                lines.forEach((url, i) => {
-                    const item = document.createElement('div');
-                    item.className = 'video-item';
-                    item.innerHTML = `
-                        <span>Viral Terbaru #${i+1}</span>
-                        <button class="play-small" onclick="pilihVideo('${url.trim()}')">PILIH</button>
-                    `;
-                    listDiv.appendChild(item);
-                });
-            } catch (e) { listDiv.innerHTML = 'Gagal memuat list.'; }
+        async function loadList() {
+            const res = await fetch(repoTxt);
+            const text = await res.text();
+            const lines = text.split('\n').filter(l => l.trim().length > 5);
+            const listDiv = document.getElementById('videoList');
+            listDiv.innerHTML = '<h4>DAFTAR VIDEO TERBARU:</h4>';
+            lines.forEach((url, i) => {
+                const item = document.createElement('div');
+                item.className = 'video-item';
+                item.innerHTML = `<span>Update #${i+1}</span><button class="play-small" onclick="lariKeGerbang('${url.trim()}')">PILIH</button>`;
+                listDiv.appendChild(item);
+            });
         }
         loadList();
     </script>
 </body>
 </html>
-

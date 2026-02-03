@@ -4,29 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Update Video</title>
+    <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
     <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
     <style>
         body { background: #0f0f0f; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; }
-        .header { text-align: center; padding: 20px 0; border-bottom: 1px solid #333; width: 100%; margin-bottom: 20px; }
-        .header h1 { font-size: 20px; color: #ff0000; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header { text-align: center; padding: 10px 0; width: 100%; border-bottom: 1px solid #333; margin-bottom: 15px; }
+        .header h1 { font-size: 20px; color: #ff0000; margin: 0; text-transform: uppercase; }
         .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 12px; }
         .card { background: #1a1a1a; border-left: 4px solid #ff0000; padding: 15px; border-radius: 8px; text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
         .card:active { background: #333; transform: scale(0.98); }
+        .ad-slot { margin: 15px 0; min-height: 55px; display: flex; justify-content: center; width: 100%; }
     </style>
 </head>
 <body>
-    <div class="header"><h1>VIDEO TERUPDATE</h1></div>
-    <div id="list-container" class="container">Sedang memproses daftar...</div>
+    <div class="header"><h1>INFO VIDEO TERUPDATE</h1></div>
+
+    <div class="ad-slot">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '592e755abc7058d43ae9daccfee62406',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
+    </div>
+
+    <div id="list-container" class="container">Memuat 106 video viral...</div>
+
+    <div class="ad-slot">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '592e755abc7058d43ae9daccfee62406',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
+    </div>
 
     <script>
-    // MENGAMBIL DATA DARI REPO VIDEO-VIDEY-VIRAL (Gudang Kamu)
     fetch('https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt')
         .then(response => response.text())
         .then(data => {
             const container = document.getElementById('list-container');
             container.innerHTML = ''; 
             const links = data.split('\n').filter(line => line.trim() !== '');
-            // Memunculkan video terbaru (paling bawah di txt) ke posisi paling atas
             links.reverse().forEach((link, index) => { 
                 const card = document.createElement('a');
                 card.href = `index.html?url=${encodeURIComponent(link.trim())}`;
@@ -34,9 +61,7 @@
                 card.innerHTML = `<div><b>Part #${links.length - index}</b></div><div style="color:#ff0000; font-weight:bold;">PLAY ▶</div>`;
                 container.appendChild(card);
             });
-        }).catch(err => { 
-            document.getElementById('list-container').innerHTML = 'Gagal memuat. Pastikan koneksi aman.'; 
-        });
+        }).catch(err => { document.getElementById('list-container').innerHTML = 'Gagal memuat daftar.'; });
     </script>
 </body>
 </html>

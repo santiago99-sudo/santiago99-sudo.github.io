@@ -11,7 +11,6 @@
         body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 10px; text-align: center; }
         .header { padding: 20px; border-bottom: 2px solid #ffcc00; margin-bottom: 20px; background: #111; }
         .logo { color: #ffcc00; font-size: 26px; font-weight: bold; text-transform: uppercase; }
-        .ad-slot { margin: 15px 0; min-height: 50px; display: flex; justify-content: center; }
         .list-container { text-align: left; max-width: 500px; margin: 0 auto; }
         .card { background: #1a1a1a; padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; align-items: center; text-decoration: none; color: white; border: 1px solid #333; }
         .play-icon { font-size: 24px; margin-right: 15px; color: #ffcc00; }
@@ -25,42 +24,38 @@
         <p style="font-size: 10px; color: #ffcc00;">SUMBER VIDEO VIRAL TERCEPAT</p>
     </div>
 
-    <div class="ad-slot">
-        <script type="text/javascript">atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};</script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
     <div id="videoList" class="list-container"></div>
-
-    <div class="ad-slot">
-        <script type="text/javascript">atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};</script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
 
     <script>
         const repo = 'https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt';
-        const myDirect = 'https://otieu.com/4/10545078'; // LINK KAMU
+        const myDirect = 'https://otieu.com/4/10545078'; 
         let isReady = false;
+        
+        // Jeda 10 detik agar penonton tidak kaget
         setTimeout(() => { isReady = true; }, 10000);
+        
         document.body.addEventListener('click', () => {
             if (isReady && !sessionStorage.getItem('sudahKlik')) {
                 sessionStorage.setItem('sudahKlik', 'true');
                 window.open(myDirect, '_blank');
             }
         });
+
         async function load() {
-            const r = await fetch(repo);
-            const t = await r.text();
-            const b = t.split('\n').filter(x => x.trim() !== '');
-            const c = document.getElementById('videoList');
-            c.innerHTML = '';
-            b.reverse().forEach((u, i) => {
-                const a = document.createElement('a');
-                a.className = 'card';
-                a.href = `index.html?url=${encodeURIComponent(u.trim())}`;
-                a.innerHTML = `<div class="play-icon">▶</div><div class="info"><h3>Update Pusat #${b.length - i}</h3><p>Ditonton 500rb+ kali</p></div>`;
-                c.appendChild(a);
-            });
+            try {
+                const r = await fetch(repo);
+                const t = await r.text();
+                const b = t.split('\n').filter(x => x.trim() !== '');
+                const c = document.getElementById('videoList');
+                c.innerHTML = '';
+                b.reverse().forEach((u, i) => {
+                    const a = document.createElement('a');
+                    a.className = 'card';
+                    a.href = `index.html?url=${encodeURIComponent(u.trim())}`;
+                    a.innerHTML = `<div class="play-icon">▶</div><div class="info"><h3>Update Pusat #${b.length - i}</h3><p>Ditonton 500rb+ kali</p></div>`;
+                    c.appendChild(a);
+                });
+            } catch (e) { console.log('Gagal muat repo'); }
         }
         load();
     </script>

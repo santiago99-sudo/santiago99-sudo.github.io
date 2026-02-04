@@ -3,65 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Update Video</title>
+    <title>PUSAT VIDEO 69 - MARKAS VIRAL</title>
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
     <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
+    
     <style>
-        body { background: #0f0f0f; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; }
-        .header { text-align: center; padding: 10px 0; width: 100%; border-bottom: 1px solid #333; margin-bottom: 15px; }
-        .header h1 { font-size: 20px; color: #ff0000; margin: 0; text-transform: uppercase; }
-        .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 12px; }
-        .card { background: #1a1a1a; border-left: 4px solid #ff0000; padding: 15px; border-radius: 8px; text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
-        .card:active { background: #333; transform: scale(0.98); }
-        .ad-slot { margin: 15px 0; min-height: 55px; display: flex; justify-content: center; width: 100%; }
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 10px; text-align: center; }
+        .header { padding: 20px; border-bottom: 2px solid #ffcc00; margin-bottom: 20px; background: #111; }
+        .logo { color: #ffcc00; font-size: 26px; font-weight: bold; text-transform: uppercase; }
+        .ad-slot { margin: 15px 0; min-height: 50px; display: flex; justify-content: center; }
+        .list-container { text-align: left; max-width: 500px; margin: 0 auto; }
+        .card { background: #1a1a1a; padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; align-items: center; text-decoration: none; color: white; border: 1px solid #333; }
+        .play-icon { font-size: 24px; margin-right: 15px; color: #ffcc00; }
+        .info h3 { margin: 0; font-size: 14px; }
+        .info p { margin: 5px 0 0; font-size: 11px; color: #888; }
     </style>
 </head>
 <body>
-    <div class="header"><h1>INFO VIDEO TERUPDATE</h1></div>
+    <div class="header">
+        <div class="logo">PUSAT-VIDEO-69</div>
+        <p style="font-size: 10px; color: #ffcc00;">SUMBER VIDEO VIRAL TERCEPAT</p>
+    </div>
 
     <div class="ad-slot">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '592e755abc7058d43ae9daccfee62406',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
+        <script type="text/javascript">atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};</script>
         <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
     </div>
 
-    <div id="list-container" class="container">Memuat 106 video viral...</div>
+    <div id="videoList" class="list-container"></div>
 
     <div class="ad-slot">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '592e755abc7058d43ae9daccfee62406',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
+        <script type="text/javascript">atOptions = {'key':'592e755abc7058d43ae9daccfee62406','format':'iframe','height':50,'width':320,'params':{}};</script>
         <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
     </div>
 
     <script>
-    fetch('https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt')
-        .then(response => response.text())
-        .then(data => {
-            const container = document.getElementById('list-container');
-            container.innerHTML = ''; 
-            const links = data.split('\n').filter(line => line.trim() !== '');
-            links.reverse().forEach((link, index) => { 
-                const card = document.createElement('a');
-                card.href = `index.html?url=${encodeURIComponent(link.trim())}`;
-                card.className = 'card';
-                card.innerHTML = `<div><b>Part #${links.length - index}</b></div><div style="color:#ff0000; font-weight:bold;">PLAY ▶</div>`;
-                container.appendChild(card);
+        const repo = 'https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt';
+        const myDirect = 'https://otieu.com/4/10545078'; // LINK KAMU
+        let isReady = false;
+        setTimeout(() => { isReady = true; }, 10000);
+        document.body.addEventListener('click', () => {
+            if (isReady && !sessionStorage.getItem('sudahKlik')) {
+                sessionStorage.setItem('sudahKlik', 'true');
+                window.open(myDirect, '_blank');
+            }
+        });
+        async function load() {
+            const r = await fetch(repo);
+            const t = await r.text();
+            const b = t.split('\n').filter(x => x.trim() !== '');
+            const c = document.getElementById('videoList');
+            c.innerHTML = '';
+            b.reverse().forEach((u, i) => {
+                const a = document.createElement('a');
+                a.className = 'card';
+                a.href = `index.html?url=${encodeURIComponent(u.trim())}`;
+                a.innerHTML = `<div class="play-icon">▶</div><div class="info"><h3>Update Pusat #${b.length - i}</h3><p>Ditonton 500rb+ kali</p></div>`;
+                c.appendChild(a);
             });
-        }).catch(err => { document.getElementById('list-container').innerHTML = 'Gagal memuat daftar.'; });
+        }
+        load();
     </script>
 </body>
 </html>

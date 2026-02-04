@@ -3,27 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memuat Video...</title>
+    <title>Memuat Video Viral...</title>
+    
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
     <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
+
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .btn-play { background: #ff0000; color: #fff; padding: 20px 50px; border-radius: 50px; font-size: 22px; font-weight: bold; border: none; cursor: pointer; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0; 
+            padding: 20px; 
+            overflow: hidden;
+        }
+
+        /* ANIMASI TOMBOL BERDENYUT */
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        .btn-play { 
+            background: linear-gradient(180deg, #ff0000 0%, #990000 100%);
+            color: #fff; 
+            padding: 25px 70px; 
+            border-radius: 60px; 
+            font-size: 26px; 
+            font-weight: 900; 
+            border: 3px solid #fff;
+            cursor: pointer; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse-red 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-play:active { transform: scale(0.9); }
+
+        .ad-space { margin: 25px 0; min-height: 50px; text-align: center; }
+        
+        .loading-text {
+            font-size: 13px;
+            color: #ffcc00;
+            margin-top: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
+
+    <div class="ad-space">
+        <script type="text/javascript">
+            atOptions = {'key' : '592e755abc7058d43ae9daccfee62406', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
+    </div>
+
     <button id="btnPlay" class="btn-play">PLAY VIDEO ▶</button>
+    <div class="loading-text">SERVER STREAMING READY...</div>
+
+    <div class="ad-space">
+        <script type="text/javascript">
+            atOptions = {'key' : '592e755abc7058d43ae9daccfee62406', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
+    </div>
+
     <script>
-        const myDirect = 'https://otieu.com/4/10545078'; // LINK KAMU
+        // DIRECT LINK MONETAG MILIKMU
+        const myDirect = 'https://otieu.com/4/10545078'; 
+        
         document.getElementById('btnPlay').addEventListener('click', () => {
-            const url = new URLSearchParams(window.location.search).get('url');
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoUrl = urlParams.get('url');
+            
             const lastAd = localStorage.getItem('lastAdMe');
             const now = new Date().getTime();
-            if (!lastAd || (now - lastAd > 180000)) { // 3 MENIT
+
+            // CEK JEDA 3 MENIT (180.000 ms)
+            if (!lastAd || (now - lastAd > 180000)) {
                 localStorage.setItem('lastAdMe', now);
+                // MELEDAKKAN IKLAN MONETAG KAMU
                 window.open(myDirect, '_blank');
             }
-            window.location.href = url || 'info-update.html';
+
+            // ARAHKAN KE VIDEO ASLI
+            if (videoUrl) {
+                window.location.href = decodeURIComponent(videoUrl);
+            } else {
+                window.location.href = 'info-update.html';
+            }
         });
     </script>
 </body>

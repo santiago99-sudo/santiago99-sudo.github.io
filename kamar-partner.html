@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satu Langkah Lagi...</title>
+    <title>VIDEO HOT INDO - SIAP PUTAR</title>
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
     <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
     <style>
         body { background: #0f0f0f; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; padding: 20px; text-align: center; }
-        .box { background: #1a1a1a; padding: 30px; border-radius: 15px; border: 1px solid #333; width: 100%; max-width: 400px; }
-        .btn-play { background: #ff0000; color: white; padding: 15px 40px; border-radius: 50px; font-size: 20px; font-weight: bold; border: none; cursor: pointer; width: 100%; box-shadow: 0 0 20px rgba(255,0,0,0.4); }
+        .box { background: #1a1a1a; padding: 30px; border-radius: 15px; border: 2px solid #ff0000; width: 100%; max-width: 400px; box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+        .btn-play { background: #ff0000; color: white; padding: 15px 40px; border-radius: 50px; font-size: 20px; font-weight: bold; border: none; cursor: pointer; width: 100%; box-shadow: 0 5px 15px rgba(255,0,0,0.4); text-transform: uppercase; }
+        .btn-play:active { transform: scale(0.98); }
         .ad-space { margin-top: 30px; width: 100%; }
     </style>
 </head>
 <body>
 
     <div class="box">
-        <h2 style="color: #ff0000;">VIDEO SIAP!</h2>
-        <p>Klik tombol di bawah untuk memutar</p>
+        <h2 style="color: #ff0000; margin-top: 0;">VIDEO SIAP!</h2>
+        <p style="color: #ccc;">Klik tombol di bawah untuk memutar</p>
         <button id="btnPlay" class="btn-play">PLAY ▶</button>
     </div>
 
     <div class="ad-space">
-        <p style="font-size: 10px; color: #444;">ADVERTISEMENT</p>
         <script type="text/javascript">
             atOptions = {'key':'592e755abc7058d43ae9daccfee62406', 'format':'iframe', 'height':50, 'width':320, 'params':{}};
         </script>
@@ -37,7 +37,6 @@
             const targetUrl = params.get('url');
 
             if (!targetUrl || targetUrl === 'null') {
-                alert('Maaf, Link Video tidak ditemukan.');
                 window.location.href = 'partner1.html';
                 return;
             }
@@ -45,14 +44,14 @@
             const lastAd = localStorage.getItem('lastAdPartner');
             const now = new Date().getTime();
 
-            // DURASI 2 MENIT (120.000 ms)
-            if (!lastAd || (now - lastAd > 120000)) {
+            // DURASI 3 MENIT (180.000 ms) - LEBIH AMAN & TRAFIK AWET
+            if (!lastAd || (now - lastAd > 180000)) {
                 localStorage.setItem('lastAdPartner', now);
                 window.open(partnerDirectLink, '_blank');
             }
 
-            // Langsung ke video asli
-            window.location.href = targetUrl;
+            // Arahkan ke video asli (Videy)
+            window.location.href = decodeURIComponent(targetUrl);
         });
     </script>
 </body>

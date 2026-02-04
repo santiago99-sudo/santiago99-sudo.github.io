@@ -34,7 +34,6 @@
                 const listDiv = document.getElementById('videoList');
                 listDiv.innerHTML = '';
 
-                // REVERSE: Agar video terbaru di atas
                 baris.reverse().forEach((url, i) => {
                     const item = document.createElement('div');
                     item.className = 'video-item';
@@ -49,7 +48,6 @@
         }
 
         function masukKamar(urlVideo) {
-            // Mengarahkan ke halaman kamar milik partner
             window.location.href = `kamar-partner.html?url=${encodeURIComponent(urlVideo)}`;
         }
 

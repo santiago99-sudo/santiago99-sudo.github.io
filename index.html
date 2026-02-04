@@ -3,36 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player</title>
+    <title>Memuat Video...</title>
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
     <script src="https://quge5.com/88/tag.min.js" data-zone="208110" async data-cfasync="false"></script>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
-        .btn-play { background: #ff0000; color: #fff; padding: 18px 45px; font-size: 22px; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px rgba(255,0,0,0.5); transition: 0.2s; }
-        .btn-play:active { transform: scale(0.95); }
-        p { color: #888; font-size: 14px; margin-bottom: 25px; }
+        body { background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .btn-play { background: #ff0000; color: #fff; padding: 20px 50px; border-radius: 50px; font-size: 22px; font-weight: bold; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <p>Klik tombol untuk memutar video</p>
-    <button id="playBtn" class="btn-play">PLAY VIDEO ▶</button>
-
+    <button id="btnPlay" class="btn-play">PLAY VIDEO ▶</button>
     <script>
-    document.getElementById('playBtn').addEventListener('click', function() {
-        const params = new URLSearchParams(window.location.search);
-        const videoUrl = params.get('url');
-        if (!videoUrl) { window.location.href = 'info-update.html'; return; }
-
-        const directLink = 'https://otieu.com/4/10545078';
-        const lastAd = localStorage.getItem('lastAdTime');
-        const now = new Date().getTime();
-
-        if (!lastAd || (now - lastAd > 300000)) {
-            localStorage.setItem('lastAdTime', now);
-            window.open(directLink, '_blank');
-        }
-        window.location.href = videoUrl;
-    });
+        const myDirect = 'https://otieu.com/4/10545078'; // LINK KAMU
+        document.getElementById('btnPlay').addEventListener('click', () => {
+            const url = new URLSearchParams(window.location.search).get('url');
+            const lastAd = localStorage.getItem('lastAdMe');
+            const now = new Date().getTime();
+            if (!lastAd || (now - lastAd > 180000)) { // 3 MENIT
+                localStorage.setItem('lastAdMe', now);
+                window.open(myDirect, '_blank');
+            }
+            window.location.href = url || 'info-update.html';
+        });
     </script>
 </body>
 </html>

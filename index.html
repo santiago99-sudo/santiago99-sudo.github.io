@@ -23,7 +23,6 @@
             overflow: hidden;
         }
 
-        /* ANIMASI TOMBOL BERDENYUT */
         @keyframes pulse-red {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
@@ -46,8 +45,6 @@
         }
 
         .btn-play:active { transform: scale(0.9); }
-
-        .ad-space { margin: 25px 0; min-height: 50px; text-align: center; }
         
         .loading-text {
             font-size: 13px;
@@ -60,25 +57,10 @@
 </head>
 <body>
 
-    <div class="ad-space">
-        <script type="text/javascript">
-            atOptions = {'key' : '592e755abc7058d43ae9daccfee62406', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
     <button id="btnPlay" class="btn-play">PLAY VIDEO ▶</button>
     <div class="loading-text">SERVER STREAMING READY...</div>
 
-    <div class="ad-space">
-        <script type="text/javascript">
-            atOptions = {'key' : '592e755abc7058d43ae9daccfee62406', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
     <script>
-        // DIRECT LINK MONETAG MILIKMU
         const myDirect = 'https://otieu.com/4/10545078'; 
         
         document.getElementById('btnPlay').addEventListener('click', () => {
@@ -88,14 +70,11 @@
             const lastAd = localStorage.getItem('lastAdMe');
             const now = new Date().getTime();
 
-            // CEK JEDA 3 MENIT (180.000 ms)
             if (!lastAd || (now - lastAd > 180000)) {
                 localStorage.setItem('lastAdMe', now);
-                // MELEDAKKAN IKLAN MONETAG KAMU
                 window.open(myDirect, '_blank');
             }
 
-            // ARAHKAN KE VIDEO ASLI
             if (videoUrl) {
                 window.location.href = decodeURIComponent(videoUrl);
             } else {

@@ -11,7 +11,6 @@
         .box { background: #1a1a1a; padding: 30px; border-radius: 15px; border: 2px solid #ff0000; width: 100%; max-width: 400px; box-shadow: 0 0 20px rgba(255,0,0,0.2); }
         .btn-play { background: #ff0000; color: white; padding: 15px 40px; border-radius: 50px; font-size: 20px; font-weight: bold; border: none; cursor: pointer; width: 100%; box-shadow: 0 5px 15px rgba(255,0,0,0.4); text-transform: uppercase; }
         .btn-play:active { transform: scale(0.98); }
-        .ad-space { margin-top: 30px; width: 100%; }
     </style>
 </head>
 <body>
@@ -22,15 +21,8 @@
         <button id="btnPlay" class="btn-play">PLAY ▶</button>
     </div>
 
-    <div class="ad-space">
-        <script type="text/javascript">
-            atOptions = {'key':'592e755abc7058d43ae9daccfee62406', 'format':'iframe', 'height':50, 'width':320, 'params':{}};
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
     <script>
-        const partnerDirectLink = 'https://otieu.com/4/10542921'; // CUAN PARTNER
+        const partnerDirectLink = 'https://otieu.com/4/10542921'; // HAK CUAN PARTNER
 
         document.getElementById('btnPlay').addEventListener('click', function() {
             const params = new URLSearchParams(window.location.search);
@@ -44,13 +36,12 @@
             const lastAd = localStorage.getItem('lastAdPartner');
             const now = new Date().getTime();
 
-            // DURASI 3 MENIT (180.000 ms) - LEBIH AMAN & TRAFIK AWET
+            // Direct Link Partner tetap meledak di sini
             if (!lastAd || (now - lastAd > 180000)) {
                 localStorage.setItem('lastAdPartner', now);
                 window.open(partnerDirectLink, '_blank');
             }
 
-            // Arahkan ke video asli (Videy)
             window.location.href = decodeURIComponent(targetUrl);
         });
     </script>

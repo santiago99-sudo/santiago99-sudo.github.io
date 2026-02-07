@@ -26,12 +26,13 @@
 
     <div id="videoList" class="list-container"></div>
 
+    <div style="display:none;"><script type="text/javascript">var _Hasync=_Hasync||[];_Hasync.push(['Histats.start','1,5007398,4,0,0,0,00010000']);_Hasync.push(['Histats.fasi','1']);_Hasync.push(['Histats.track_hits','']);(function(){var hs=document.createElement('script');hs.type='text/javascript';hs.async=true;hs.src='//s10.histats.com/js15_as.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(hs);})();</script></div>
+
     <script>
         const repo = 'https://raw.githubusercontent.com/santiago99-sudo/video-videy-viral/main/daftar-link.txt';
         const myDirect = 'https://otieu.com/4/10545078'; 
         let isReady = false;
         
-        // Jeda 10 detik agar penonton tidak kaget
         setTimeout(() => { isReady = true; }, 10000);
         
         document.body.addEventListener('click', () => {
@@ -58,6 +59,12 @@
             } catch (e) { console.log('Gagal muat repo'); }
         }
         load();
+
+        // PROTEKSI ANTI-INTIP
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))))) return false;
+        };
     </script>
 </body>
 </html>

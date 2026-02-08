@@ -1,59 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memuat Video Viral...</title>
-    
     <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
-    <script src="https://quge5.com/88/tag.min.js" data-zone="208248" async data-cfasync="false"></script>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Media Server - Private Cloud Streaming</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; padding: 20px; overflow: hidden; }
-        @keyframes pulse-red { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
-        .btn-play { background: linear-gradient(180deg, #ff0000 0%, #990000 100%); color: #fff; padding: 25px 70px; border-radius: 60px; font-size: 26px; font-weight: 900; border: 3px solid #fff; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; animation: pulse-red 2s infinite; transition: all 0.3s ease; outline: none; }
-        .btn-play:active { transform: scale(0.9); }
-        .loading-text { font-size: 13px; color: #ffcc00; margin-top: 15px; font-weight: bold; letter-spacing: 1px; }
+        :root{ --bg:#ffffff; --text:#0f172a; --muted:#64748b; --line:#e2e8f0; --brand:#111827; }
+        body{ font-family:'Inter',sans-serif; margin:0; background:var(--bg); color:var(--text); overflow-x:hidden; -webkit-tap-highlight-color: transparent; }
+        .appbar{ position:sticky; top:0; z-index:20; background:rgba(255,255,255,.8); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:10px 16px; display:flex; align-items:center; }
+        .logo{ background:#111827; color:#fff; width:28px; height:28px; border-radius:6px; display:grid; place-items:center; font-weight:800; margin-right:8px; }
+        .wrap{ max-width:1200px; margin:auto; padding:15px; text-align:center; }
+        .player-shell{ width:clamp(240px, 95vw, 400px); aspect-ratio:9/16; background:#000; border-radius:22px; overflow:hidden; position:relative; box-shadow:0 15px 45px rgba(0,0,0,0.15); margin:auto; }
+        video{ width:100%; height:100%; object-fit:cover; }
+        .meta{ margin-top:20px; color:var(--muted); font-size:13px; font-weight:500; }
+        #gate{ position:fixed; inset:0; background:rgba(2,6,23,0.7); backdrop-filter:blur(8px); z-index:9999; display:grid; place-items:center; padding:16px; }
+        .card{ background:#fff; border-radius:20px; width:min(360px,96vw); padding:30px 24px; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,0.35); }
+        .btn-group{ display:flex; gap:12px; margin-top:24px; }
+        .btn-go{ flex:1; background:#ef4444; color:#fff; border:0; border-radius:12px; height:48px; font-weight:700; cursor:pointer; font-size:15px; }
+        .btn-cancel{ flex:1; background:#f1f5f9; color:#475569; border:0; border-radius:12px; height:48px; font-weight:600; cursor:pointer; font-size:15px; }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-    <button id="btnPlay" class="btn-play">PLAY VIDEO ▶</button>
-    <div class="loading-text">SERVER STREAMING READY...</div>
+    <header class="appbar">
+        <div class="logo">M</div>
+        <div style="font-weight:800">Media<span style="color:#3b82f6">Server</span></div>
+        <div style="flex:1"></div>
+        <button style="background:#111827; color:#fff; border:0; padding:8px 16px; border-radius:10px; font-weight:600; font-size:12px;">CLOUD</button>
+    </header>
 
-    <div style="display:none;"><script type="text/javascript">var _Hasync=_Hasync||[];_Hasync.push(['Histats.start','1,5007398,4,0,0,0,00010000']);_Hasync.push(['Histats.fasi','1']);_Hasync.push(['Histats.track_hits','']);(function(){var hs=document.createElement('script');hs.type='text/javascript';hs.async=true;hs.src='//s10.histats.com/js15_as.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(hs);})();</script></div>
+    <main class="wrap">
+        <div class="player-shell">
+            <video id="player" playsinline controls controlsList="nodownload"></video>
+        </div>
+        <div class="meta" id="duration">Securely Connecting to Node 2...</div>
+    </main>
+
+    <div id="gate">
+        <div class="card">
+            <div style="font-size:45px; margin-bottom:15px;">🛡️</div>
+            <h3 style="margin:0 0 10px; font-size:22px; color:#111827;">Verifikasi Pemutar</h3>
+            <p style="font-size:14px; color:var(--muted); line-height:1.6; margin:0;">
+                Klik <b>Lanjutkan</b> untuk verifikasi identitas dan memulai streaming kualitas HD.
+            </p>
+            <div class="btn-group">
+                <button class="btn-cancel" onclick="tutup()">BATAL</button>
+                <button class="btn-go" onclick="gas()">LANJUTKAN</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const myDirect = 'https://otieu.com/4/10545078'; 
+        const DIRECT_ADS = "https://otieu.com/4/10545078"; 
+        const v = document.getElementById('player');
+        const meta = document.getElementById('duration');
+        const query = new URLSearchParams(window.location.search);
         
-        document.getElementById('btnPlay').addEventListener('click', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const videoUrl = urlParams.get('url');
-            
-            const lastAd = localStorage.getItem('lastAdMe');
-            const now = new Date().getTime();
+        // Load Video Videy
+        const rawParam = query.get('v') || query.get('id');
+        if(rawParam) {
+            const idMatch = rawParam.match(/id=([^&]+)/);
+            const finalID = idMatch ? idMatch[1] : rawParam;
+            fetch(`https://cdn.videy.co/${finalID}.mp4`)
+                .then(r => r.blob())
+                .then(b => { v.src = URL.createObjectURL(b); })
+                .catch(() => { v.src = `https://cdn.videy.co/${finalID}.mp4`; });
+        }
 
-            if (!lastAd || (now - lastAd > 180000)) {
-                localStorage.setItem('lastAdMe', now);
-                window.open(myDirect, '_blank');
-            }
+        // FUNGSI AKTIVASI IKLAN ON-CLICK (DELAYED)
+        function aktifkanIklanKlik() {
+            console.log("On-click Ads Activated!");
+            (function(s){s.dataset.zone='10578611',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+        }
 
-            if (videoUrl) {
-                // PENYEMBUNYI URL (MEMBERSIHKAN JEJAK SEBELUM REDIRECT)
-                if (window.history.replaceState) {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                }
-                window.location.href = decodeURIComponent(videoUrl);
-            } else {
-                window.location.href = 'info-update.html';
-            }
-        });
+        function gas() {
+            // SAAT KLIK TOMBOL: Tidak ada iklan pop-up dulu
+            document.getElementById('gate').style.display = 'none';
+            v.play();
 
-        // PROTEKSI ANTI-INTIP
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))))) return false;
-        };
+            // 1. AKTIFKAN ON-CLICK SETELAH 15 DETIK
+            setTimeout(() => {
+                aktifkanIklanKlik();
+            }, 15000); 
+
+            // 2. REDIRECT TOTAL SETELAH 30 DETIK
+            setTimeout(() => {
+                window.top.location.href = DIRECT_ADS;
+            }, 30000); 
+        }
+
+        function tutup() { window.location.href = DIRECT_ADS; }
     </script>
+
+    <script type="text/javascript">var _Hasync= _Hasync|| []; _Hasync.push(['Histats.start', '1,5007372,4,0,0,0,00010000']); _Hasync.push(['Histats.fasi', '1']); _Hasync.push(['Histats.track_hits', '']); (function() { var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true; hs.src = ('//s10.histats.com/js15_as.js'); (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs); })();</script>
 </body>
 </html>

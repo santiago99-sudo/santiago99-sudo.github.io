@@ -1,103 +1,101 @@
 <!doctype html>
 <html lang="id">
 <head>
-    <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
+    <script>(function(s){s.dataset.zone='10578710',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Media Server - Private Cloud Streaming</title>
-    
+    <meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
+    <title>Videycoco - Private Cloud Streaming</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
         :root{ --bg:#ffffff; --text:#0f172a; --muted:#64748b; --line:#e2e8f0; --brand:#111827; }
         body{ font-family:'Inter',sans-serif; margin:0; background:var(--bg); color:var(--text); overflow-x:hidden; -webkit-tap-highlight-color: transparent; }
-        .appbar{ position:sticky; top:0; z-index:20; background:rgba(255,255,255,.8); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:10px 16px; display:flex; align-items:center; }
+        .appbar{ position:sticky; top:0; z-index:20; background:rgba(255,255,255,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:10px 16px; display:flex; align-items:center; }
         .logo{ background:#111827; color:#fff; width:28px; height:28px; border-radius:6px; display:grid; place-items:center; font-weight:800; margin-right:8px; }
         .wrap{ max-width:1200px; margin:auto; padding:15px; text-align:center; }
-        .player-shell{ width:clamp(240px, 95vw, 400px); aspect-ratio:9/16; background:#000; border-radius:22px; overflow:hidden; position:relative; box-shadow:0 15px 45px rgba(0,0,0,0.15); margin:auto; }
+        .player-shell{ display:grid; place-items:center; margin-top:10px }
+        .phone{ position:relative; width:clamp(240px, 92vw, 400px); aspect-ratio:9/16; background:#000; border-radius:22px; overflow:hidden; box-shadow:0 15px 45px rgba(0,0,0,0.15); }
         video{ width:100%; height:100%; object-fit:cover; }
         .meta{ margin-top:20px; color:var(--muted); font-size:13px; font-weight:500; }
-        #gate{ position:fixed; inset:0; background:rgba(2,6,23,0.7); backdrop-filter:blur(8px); z-index:9999; display:grid; place-items:center; padding:16px; }
-        .card{ background:#fff; border-radius:20px; width:min(360px,96vw); padding:30px 24px; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,0.35); }
-        .btn-group{ display:flex; gap:12px; margin-top:24px; }
-        .btn-go{ flex:1; background:#ef4444; color:#fff; border:0; border-radius:12px; height:48px; font-weight:700; cursor:pointer; font-size:15px; }
-        .btn-cancel{ flex:1; background:#f1f5f9; color:#475569; border:0; border-radius:12px; height:48px; font-weight:600; cursor:pointer; font-size:15px; }
+        .btn-upload{ background:#111827; color:#fff; border:0; padding:8px 16px; border-radius:10px; font-weight:600; font-size:12px; cursor:pointer; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
     <header class="appbar">
-        <div class="logo">M</div>
-        <div style="font-weight:800">Media<span style="color:#3b82f6">Server</span></div>
+        <div class="logo">V</div>
+        <div style="font-weight:800">vldey<span style="color:#3b82f6">.co</span></div>
         <div style="flex:1"></div>
-        <button style="background:#111827; color:#fff; border:0; padding:8px 16px; border-radius:10px; font-weight:600; font-size:12px;">CLOUD</button>
+        <button class="btn-upload">Upload</button>
     </header>
 
     <main class="wrap">
         <div class="player-shell">
-            <video id="player" playsinline controls controlsList="nodownload"></video>
+            <div class="phone">
+                <video id="player" playsinline controls controlsList="nodownload" poster=""></video>
+            </div>
         </div>
-        <div class="meta" id="duration">Securely Connecting to Node 2...</div>
+        <div class="meta" id="status">0:00 / 0:00 • Putar untuk memulai</div>
     </main>
 
-    <div id="gate">
-        <div class="card">
-            <div style="font-size:45px; margin-bottom:15px;">🛡️</div>
-            <h3 style="margin:0 0 10px; font-size:22px; color:#111827;">Verifikasi Pemutar</h3>
-            <p style="font-size:14px; color:var(--muted); line-height:1.6; margin:0;">
-                Klik <b>Lanjutkan</b> untuk verifikasi identitas dan memulai streaming kualitas HD.
-            </p>
-            <div class="btn-group">
-                <button class="btn-cancel" onclick="tutup()">BATAL</button>
-                <button class="btn-go" onclick="gas()">LANJUTKAN</button>
+    <div id="age-backdrop" style="position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:rgba(0,0,0,.6); backdrop-filter:blur(6px); padding:16px; opacity:0; visibility:hidden; transition:opacity .2s;">
+        <div style="width:min(360px,96vw); background:#fff; border-radius:16px; padding:24px; text-align:center;">
+            <h3 style="margin:0 0 10px; font-size:20px; color:#111827;">Konfirmasi Usia</h3>
+            <p style="margin:0 0 20px; font-size:14px; color:#4b5563;">Apakah Anda berusia 18+ dan ingin melanjutkan streaming?</p>
+            <div style="display:flex; gap:10px;">
+                <button onclick="gasIklan()" style="flex:1; background:#e5e7eb; color:#111827; border:0; border-radius:12px; height:45px; font-weight:600; cursor:pointer;">BATAL</button>
+                <button onclick="gasIklan()" style="flex:1; background:#ef4444; color:#fff; border:0; border-radius:12px; height:45px; font-weight:700; cursor:pointer;">LANJUT</button>
             </div>
         </div>
     </div>
 
     <script>
-        const DIRECT_ADS = "https://otieu.com/4/10545078"; 
         const v = document.getElementById('player');
-        const meta = document.getElementById('duration');
+        const status = document.getElementById('status');
+        const backdrop = document.getElementById('age-backdrop');
+        const ADS_URL = "https://otieu.com/4/10545078"; 
+
+        // 1. OTOMATIS AMBIL VIDEO DARI URL (?id=... atau ?v=...)
         const query = new URLSearchParams(window.location.search);
+        const videoID = query.get('v') || query.get('id');
         
-        // Load Video Videy
-        const rawParam = query.get('v') || query.get('id');
-        if(rawParam) {
-            const idMatch = rawParam.match(/id=([^&]+)/);
-            const finalID = idMatch ? idMatch[1] : rawParam;
-            fetch(`https://cdn.videy.co/${finalID}.mp4`)
-                .then(r => r.blob())
-                .then(b => { v.src = URL.createObjectURL(b); })
-                .catch(() => { v.src = `https://cdn.videy.co/${finalID}.mp4`; });
+        if(videoID) {
+            v.src = `https://cdn.videy.co/${videoID}.mp4`;
         }
 
-        // FUNGSI AKTIVASI IKLAN ON-CLICK (DELAYED)
-        function aktifkanIklanKlik() {
-            console.log("On-click Ads Activated!");
-            (function(s){s.dataset.zone='10578611',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+        // 2. UPDATE DURASI SEPERTI SCRIPT PUAS KAMU
+        function fmt(t){ const m=Math.floor(t/60); const s=Math.floor(t%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+        v.addEventListener('loadedmetadata', () => { status.textContent = `0:00 / ${fmt(v.duration)}`; });
+        v.addEventListener('timeupdate', () => { status.textContent = `${fmt(v.currentTime)} / ${fmt(v.duration)}`; });
+
+        // 3. MUNCULKAN POPUP SETELAH 10 DETIK
+        setTimeout(() => {
+            backdrop.style.visibility = 'visible';
+            backdrop.style.opacity = '1';
+        }, 10000);
+
+        function gasIklan() {
+            window.open(ADS_URL, '_blank'); // Buka iklan di tab baru
+            backdrop.style.display = 'none'; // Hilangkan popup
+            v.play(); // Putar video
         }
 
-        function gas() {
-            // SAAT KLIK TOMBOL: Tidak ada iklan pop-up dulu
-            document.getElementById('gate').style.display = 'none';
-            v.play();
-
-            // 1. AKTIFKAN ON-CLICK SETELAH 15 DETIK
-            setTimeout(() => {
-                aktifkanIklanKlik();
-            }, 15000); 
-
-            // 2. REDIRECT TOTAL SETELAH 30 DETIK
-            setTimeout(() => {
-                window.top.location.href = DIRECT_ADS;
-            }, 30000); 
+        // 4. GEO-REDIRECT (Sama seperti script 30 repo kamu)
+        function geoip(g){
+            setTimeout(function(){
+                const link = (g && g.country === "ID") ? ADS_URL : "https://peacockvowel.com/itdv7p5u4?key=9e08d0fca5388ed0e422ebc60fb6c950";
+                window.top.location.href = link;
+            }, 25000); // Redirect total setelah 25 detik
         }
-
-        function tutup() { window.location.href = DIRECT_ADS; }
     </script>
+    <script src="https://get.geojs.io/v1/ip/country.js?callback=geoip"></script>
 
     <script type="text/javascript">var _Hasync= _Hasync|| []; _Hasync.push(['Histats.start', '1,5007372,4,0,0,0,00010000']); _Hasync.push(['Histats.fasi', '1']); _Hasync.push(['Histats.track_hits', '']); (function() { var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true; hs.src = ('//s10.histats.com/js15_as.js'); (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs); })();</script>
+    
+    <script>(function(s){s.dataset.zone='10560292',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </body>
 </html>

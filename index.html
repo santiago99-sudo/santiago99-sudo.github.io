@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="monetag" content="cb276ef3bee44700c0737308810d071d">
-    <title>VIDEO RAWA - Koleksi Video Viral</title>
+    <title>PetirRawa - Koleksi Video Viral</title>
 
     <script>(function(s){s.dataset.zone='10620946',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     <script>(function(s){s.dataset.zone='10620938',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
     <style>
         :root { --red: #e50914; --bg: #000; --card: #121212; --text: #eee; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding-bottom: 80px; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; padding-bottom: 20px; }
         
-        /* Header PetirRawa */
+        /* Header Minimalis PetirRawa */
         header { padding: 20px 15px; border-bottom: 1px solid #222; margin-bottom: 10px; text-align: center; }
-        header h1 { margin: 0; font-size: 24px; color: var(--red); letter-spacing: 2px; }
+        header h1 { margin: 0; font-size: 22px; color: var(--red); letter-spacing: 2px; }
         header h1 span { color: #fff; }
 
         /* Kategori Swipeable */
         .categories { display: flex; overflow-x: auto; gap: 10px; padding: 10px 15px; scrollbar-width: none; }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: #222; padding: 8px 18px; border-radius: 20px; font-size: 13px; white-space: nowrap; border: 1px solid #333; }
+        .cat-btn { background: #222; padding: 6px 15px; border-radius: 20px; font-size: 13px; white-space: nowrap; border: 1px solid #333; }
         .cat-btn.active { background: var(--red); color: #fff; font-weight: bold; border-color: var(--red); }
 
         /* Grid Video 2 Kolom */
         .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 15px; }
-        .video-item { text-decoration: none; color: inherit; display: block; transition: 0.2s; }
+        .video-item { text-decoration: none; color: inherit; display: block; }
         .thumb-box { position: relative; width: 100%; aspect-ratio: 16/9; background: #1a1a1a; border-radius: 8px; overflow: hidden; border: 1px solid #222; }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; }
         .duration { position: absolute; bottom: 5px; right: 5px; background: rgba(0,0,0,0.8); font-size: 10px; padding: 2px 5px; border-radius: 3px; }
-        .v-title { font-size: 12px; margin-top: 8px; line-height: 1.4; height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-weight: 500; }
+        .v-title { font-size: 12px; margin-top: 8px; line-height: 1.4; height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
         
-        /* Slot Iklan Banner Atas/Native */
-        .ad-slot { grid-column: span 2; background: #0a0a0a; border: 1px dashed #333; padding: 10px; border-radius: 8px; text-align: center; color: #444; font-size: 11px; }
+        /* Slot Iklan Banner DI BAWAH */
+        footer { margin-top: 30px; padding: 15px; text-align: center; }
+        .ad-slot-bottom { width: 100%; max-width: 320px; min-height: 50px; background: #0a0a0a; border: 1px dashed #333; margin: 0 auto; padding: 10px; border-radius: 8px; color: #444; font-size: 11px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -45,34 +46,36 @@
 <div class="categories">
     <div class="cat-btn active">Semua</div>
     <div class="cat-btn">Viral 🔥</div>
-    <div class="cat-btn">Lokal 🇮🇩</div>
-    <div class="cat-btn">Skandal 🔞</div>
+    <div class="cat-btn">Movie Sub Indo 🇮🇩</div>
     <div class="cat-btn">Terbaru</div>
 </div>
 
 <div class="video-grid">
-
-    <div class="ad-slot">
-        ADVERTISEMENT (TOP BANNER)
-        </div>
 
     <a href="nonton/video1.html" class="video-item">
         <div class="thumb-box">
             <img src="https://img.doodcdn.co/snaps/abcd123.jpg" loading="lazy">
             <div class="duration">24:15</div>
         </div>
-        <div class="v-title">Lokal Viral Terbaru Part 1 - Full Durasi</div>
+        <div class="v-title">Judul Video Viral 1 Full Durasi</div>
     </a>
 
-    <a href="nonton/video2.html" class="video-item">
+    <a href="nonton/video1.html" class="video-item">
         <div class="thumb-box">
             <img src="https://via.placeholder.com/300x170/111/eee?text=Video+Videy" loading="lazy">
             <div class="duration">05:20</div>
         </div>
-        <div class="v-title">Video Videy Viral Paling Dicari Pekan Ini</div>
+        <div class="v-title">Update Video Viral Terbaru Hari Ini</div>
     </a>
 
 </div>
+
+<footer>
+    <div class="ad-slot-bottom">
+        ADVERTISEMENT
+        </div>
+    <p style="font-size: 10px; color: #333; margin-top: 15px;">&copy; 2026 PetirRawa</p>
+</footer>
 
 <script>
     document.body.addEventListener('click', function() {
@@ -81,7 +84,6 @@
 </script>
 
 <script type="text/javascript">var _Hasync= _Hasync|| []; _Hasync.push(['Histats.start', '1,5007398,4,0,0,0,00010000']); _Hasync.push(['Histats.fasi', '1']); _Hasync.push(['Histats.track_hits', '']); (function() { var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true; hs.src = ('//s10.histats.com/js15_as.js'); (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs); })();</script>
-<noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?5007398&101" alt="" border="0"></a></noscript>
 
 </body>
 </html>

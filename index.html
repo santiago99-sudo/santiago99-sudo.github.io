@@ -7,7 +7,7 @@
     <title>PetirRawa - Update Viral Terbaru</title>
     <style>
         :root { --red: #e50914; --bg: #000; --text: #eee; }
-        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding: 0; padding-bottom: 80px; }
         header { padding: 15px; text-align: center; border-bottom: 1px solid #222; }
         h1 { color: var(--red); margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
         .categories { display: flex; overflow-x: auto; padding: 10px; gap: 10px; white-space: nowrap; }
@@ -21,6 +21,16 @@
         .v-info { padding: 5px 2px; }
         .v-title { font-size: 11px; font-weight: bold; line-height: 1.3; color: #ddd; }
         .v-tag { font-size: 9px; color: var(--red); font-weight: bold; margin-top: 3px; text-transform: uppercase; }
+
+        /* BANNER MANUAL BAWAH VIDEO */
+        .ad-footer-static { width: 90%; margin: 20px auto; text-align: center; }
+        .btn-fake-ad { background: linear-gradient(45deg, #1a1a1a, #333); color: gold; padding: 15px; border-radius: 8px; border: 1px solid #444; text-decoration: none; display: block; }
+
+        /* STICKY AD KEDAP KEDIP */
+        .sticky-bottom { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; z-index: 1000; }
+        .sticky-link { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-decoration: none; background: var(--red); color: white; font-weight: bold; font-size: 14px; animation: blinker 1.2s linear infinite; }
+        
+        @keyframes blinker { 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
@@ -36,25 +46,25 @@
 
     <div class="video-grid">
         <a href="nonton/video1.html" class="card">
-            <div class="thumb-box">
-                <img src="pucuk1.jpg" alt="Viral 1">
-                <div class="duration">05:12</div>
-            </div>
-            <div class="v-info">
-                <div class="v-title">Viral Teh Pucuk Part 1 Terbaru</div>
-                <div class="v-tag">PetirRawa Exclusive</div>
-            </div>
+            <div class="thumb-box"><img src="pucuk1.jpg" alt="V1"><div class="duration">05:12</div></div>
+            <div class="v-info"><div class="v-title">Viral Teh Pucuk Part 1 Terbaru</div><div class="v-tag">PetirRawa Exclusive</div></div>
         </a>
-
         <a href="nonton/video2.html" class="card">
-            <div class="thumb-box">
-                <img src="pucuk2.jpg" alt="Viral 2">
-                <div class="duration">08:45</div>
-            </div>
-            <div class="v-info">
-                <div class="v-title">Viral Teh Pucuk Part 2 Terbaru</div>
-                <div class="v-tag">PetirRawa Exclusive</div>
-            </div>
+            <div class="thumb-box"><img src="pucuk2.jpg" alt="V2"><div class="duration">08:45</div></div>
+            <div class="v-info"><div class="v-title">Viral Teh Pucuk Part 2 Terbaru</div><div class="v-tag">PetirRawa Exclusive</div></div>
+        </a>
+    </div>
+
+    <div class="ad-footer-static">
+        <a href="https://omg10.com/4/10623250" target="_blank" class="btn-fake-ad">
+            <strong>KLIK DISINI VIDEO TERBARU</strong><br>
+            <small>Update Viral Setiap Jam Tanpa Sensor</small>
+        </a>
+    </div>
+
+    <div class="sticky-bottom">
+        <a href="https://omg10.com/4/10623250" target="_blank" class="sticky-link">
+            🔥 DOWNLOAD VIDEO FULL HD (KLIK) 🔥
         </a>
     </div>
 

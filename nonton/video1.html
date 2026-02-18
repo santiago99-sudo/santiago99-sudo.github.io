@@ -6,24 +6,46 @@
     <title>Viral Teh Pucuk Part 1 - PetirRawa</title>
     <style>
         :root { --red: #e50914; --bg: #000; --text: #eee; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; padding: 0; overflow: hidden; }
+        /* Hapus overflow hidden agar bisa scroll ke tombol download jika video panjang */
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; padding: 0; }
+        
         .nav { padding: 15px; background: #111; border-bottom: 1px solid #222; }
         .nav a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: bold; }
         .v-judul { padding: 15px; font-size: 16px; font-weight: bold; text-align: center; color: #fff; }
         
-        /* Area Player */
-        .player-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
-        video { width: 100%; height: 100%; }
-        
-        /* Ranjau Transparan Permanen */
-        #ranjau-layar { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            z-index: 999; cursor: pointer; background: rgba(0,0,0,0);
+        /* PLAYER YANG DISESUAIKAN */
+        .player-wrapper { 
+            position: relative; 
+            width: 100%; 
+            background: #000; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .download-section { padding: 20px; text-align: center; }
-        .btn-dl { background: var(--red); color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; }
-        footer { margin-top: 20px; padding: 20px; text-align: center; border-top: 1px solid #222; color: #444; font-size: 10px; }
+        video { 
+            width: 100%;       /* Lebar penuh layar */
+            height: auto;      /* Tinggi mengikuti bentuk video asli */
+            display: block;
+            background: #000;
+        }
+        
+        /* Ranjau mengikuti tinggi otomatis video */
+        #ranjau-layar { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 999; 
+            cursor: pointer; 
+            background: rgba(0,0,0,0);
+        }
+
+        .download-section { padding: 25px; text-align: center; }
+        .btn-dl { background: var(--red); color: #fff; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4); }
+        
+        footer { padding: 20px; text-align: center; border-top: 1px solid #222; color: #444; font-size: 10px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -56,31 +78,24 @@
 
         ranjau.addEventListener('click', function() {
             counter++;
-            
-            // Suara aktif saat layar disentuh pertama kali
             if (video.muted) video.muted = false;
 
-            // LOGIKA PAJAK & ANTI-SKIP
             if (counter <= 6) {
-                // FASE PAJAK AWAL (6 Klik Pertama)
                 if (counter % 2 !== 0) {
-                    window.open(direct, '_blank'); // Klik 1,3,5 ke Monetag
+                    window.open(direct, '_blank');
                 } else {
-                    window.open(shopee, '_blank'); // Klik 2,4,6 ke Shopee
+                    window.open(shopee, '_blank');
                 }
             } else {
-                // FASE ANTI-SKIP (Setelah 6 klik, tetap dilarang mempercepat)
                 window.open(direct, '_blank');
             }
 
-            // Kunci layar kembali dengan cepat (Hanya beri 1.5 detik akses)
             ranjau.style.display = 'none';
             setTimeout(() => {
                 ranjau.style.display = 'block';
             }, 1500); 
         });
 
-        // Pajak Interval (Setiap 2 Menit agar tab tetap cuan)
         setInterval(() => {
             window.open(direct, '_blank');
         }, 120000);

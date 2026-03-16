@@ -1,4 +1,4 @@
-# Netlify Redirects Final - Jalur Aman
+# Netlify Redirects - Anti Loop 301
 /cheche/* https://santiago99-sudo.github.io/cheche/:splat 301
 /cheche10/* https://santiago99-sudo.github.io/cheche10/:splat 301
 /dolla/* https://santiago99-sudo.github.io/dolla/:splat 301

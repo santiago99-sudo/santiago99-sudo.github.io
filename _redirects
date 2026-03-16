@@ -1,4 +1,4 @@
-# Netlify Redirects
+# Netlify Redirects Final
 /Kkok/* https://santiago99-sudo.github.io/Kkok/:splat 200
 /Kkok1/* https://santiago99-sudo.github.io/Kkok1/:splat 200
 /Kkok2/* https://santiago99-sudo.github.io/Kkok2/:splat 200
